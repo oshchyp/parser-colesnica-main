@@ -1,0 +1,35 @@
+<h1>Авторизация на сайте <a href="https://b2b.pwrs.ru">b2b.pwrs.ru</a></h1>
+
+
+<?php if (\isv\IS::app()->component('main')->isAuth()) :?>
+<span style="color: #337ab7; font-size: 50px;">Вы авторизированы!</span>
+<a href="/settings/logout">
+<button class="btn btn-primary">Выйти</button>
+</a>
+<?php else: ?>
+<span style="color: red; font-size: 15px;">Вы не авторизированы!</span>
+
+<form method="post">
+    <div class="form-group">
+        <label>Логин</label>
+        <input name="d_un" value="<?=$log['d_un']?>">
+    </div>
+    <div class="form-group">
+        <label>Пароль</label>
+        <input name="d_p" value="<?=$log['d_p']?>">
+    </div>
+    <div class="form-group">
+         <label>Каптча</label>
+         <img src="/files/images/captcha.jpg?d=<?=time();?>">
+         <input name="eqa" value="">
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">Войти</button>
+    </div>
+</form>
+
+<?php endif;?>
+
+
+
+
