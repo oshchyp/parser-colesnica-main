@@ -22,6 +22,7 @@ class CurlComponent extends ISVComponent implements ISVComponentInterface {
     private $ch;
     private $url;
     private $html;
+    private $headers = [];
 
     public function init() {
         
@@ -30,6 +31,15 @@ class CurlComponent extends ISVComponent implements ISVComponentInterface {
     public function set($k, $v) {
         $this->$k = $v;
         return $this;
+    }
+
+    public function setHeaders(array $headers)
+    {
+        $headers_ = [];
+        foreach ($headers as $header=>$value){
+            $headers_[] = sprintf('%s: %s', $header, $value);
+        }
+        curl_setopt($this->ch, CURLOPT_HTTPHEADER, $headers_);
     }
 
     public function get($k) {

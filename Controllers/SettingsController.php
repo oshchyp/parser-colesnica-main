@@ -150,10 +150,10 @@ class SettingsController extends ControllerBase {
         if (IS::app()->request()->postData()) {
             $this->configComp->save(IS::app()->request()->postData());
             $curlObj->set('url', 'https://b2b.pwrs.ru')->curlInit();
+            $curlObj->setHeaders(['Host' => 'b2b.4tochki.ru']);
             $curlObj->setPost(IS::app()->request()->postData());
             $curlObj->setCookieFile('/' . IS::app()->getConfig('config')['publicDir'] . '/files/cookie.txt');
-            $response = $curlObj->getHtml();
-            //var_dump($response); die();
+            $curlObj->getHtml();
             $curlObj->close();
             $this->redirect('/settings/login');
         }

@@ -157,7 +157,7 @@ return array (
     array (
       'd_un' => 'kolesnica46',
       'd_p' => 'kolesnica461978',
-      'eqa' => '10',
+      'eqa' => '3',
     ),
     'doc_in_tires_xml' => 
     array (
